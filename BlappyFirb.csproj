@@ -6,4 +6,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="assets\background.png" />
+    <None Remove="assets\bird1.png" />
+    <None Remove="assets\bird2.png" />
+    <None Remove="assets\bird3.png" />
+    <None Remove="assets\pipe.png" />
+    <None Remove="assets\title.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\background.png" />
+    <Resource Include="assets\bird1.png" />
+    <Resource Include="assets\pipe.png" />
+    <Resource Include="assets\title.png" />
+  </ItemGroup>
+
 </Project>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace BlappyFirb
@@ -13,16 +14,18 @@ namespace BlappyFirb
     {
         public int YPosition { get; private set; }
         public int XPosition;
-        public Rectangle Rectangle { get; private set; }
+        public Image Image { get; private set; }
+        public int Size { get; private set; }
         int gravitySpeed;
-        public Birb(int size, int XPosition, int YPosition)
-        {   
+        public Birb(int size, int XPosition, int YPosition, int source)
+        {
+            this.Size = size;
             this.YPosition = YPosition;
             this.XPosition = XPosition;
-            Rectangle = new Rectangle();
-            Rectangle.Fill = Brushes.Red;
-            Rectangle.Width = size;
-            Rectangle.Height = size;
+            Image = new Image();
+            Image.Source = new BitmapImage(new Uri("assets/bird1.png", UriKind.Relative));
+            Image.Width = size;
+            Image.Height = size;
         }
         public void Jump()
         {
@@ -35,8 +38,14 @@ namespace BlappyFirb
             else
                 YPosition += gravitySpeed;
 
-            if(gravitySpeed < 20)
+            if (gravitySpeed < 20)
                 gravitySpeed += 1;
+
+            float angleHelper = gravitySpeed + 10;
+            var tmp = (angleHelper / 30);
+            var angle = -45 + tmp * 90;
+            Image.RenderTransformOrigin = new System.Windows.Point(0.5, 0.5);
+            Image.RenderTransform = new RotateTransform(angle);
         }
     }
 }

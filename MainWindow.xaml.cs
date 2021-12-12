@@ -38,17 +38,19 @@ namespace BlappyFirb
         private void StartClick(object sender, RoutedEventArgs e)
         {
             CleanBoard();
+            firstBackground.Visibility = Visibility.Visible;
+            secondBackground.Visibility = Visibility.Visible;
             ActualScoreText.Visibility = Visibility.Visible;
             ActualScoreText.Text = "Score: " + score.ToString();
 
-            Birb = new Birb(15, 50, 250);
+            Birb = new Birb(40, 50, 250, 1);
             Traps = new List<Trap>();
             score = 0;
             ticker = 0;
 
-            CanvasGame.Children.Add(Birb.Rectangle);
-            Canvas.SetLeft(Birb.Rectangle, Birb.XPosition);
-            Canvas.SetTop(Birb.Rectangle, Birb.YPosition);
+            CanvasGame.Children.Add(Birb.Image);
+            Canvas.SetLeft(Birb.Image, Birb.XPosition);
+            Canvas.SetTop(Birb.Image, Birb.YPosition);
 
 
             dispatcherTimer.Start();
@@ -66,12 +68,26 @@ namespace BlappyFirb
                 CanvasGame.Children.Add(Traps[Traps.Count - 1].UpperTrap);
                 CanvasGame.Children.Add(Traps[Traps.Count - 1].DownTrap);
                 ticker = 0;
+
             }
 
             ticker++;
             Birb.Fly();
-            Canvas.SetTop(Birb.Rectangle, Birb.YPosition);
-            foreach(var trap in Traps)
+            Canvas.SetTop(Birb.Image, Birb.YPosition);
+
+
+            if (Canvas.GetLeft(secondBackground) > 0)
+            {
+                Canvas.SetLeft(firstBackground, Canvas.GetLeft(firstBackground) - 1);
+                Canvas.SetLeft(secondBackground, Canvas.GetLeft(secondBackground) - 1);
+            }
+            else
+            {
+                Canvas.SetLeft(firstBackground, 0);
+                Canvas.SetLeft(secondBackground, 900);
+            }
+
+            foreach (var trap in Traps)
             {
                 SetTrapPosition(trap);
             }
@@ -86,8 +102,7 @@ namespace BlappyFirb
             {
                 CleanBoard();
                 dispatcherTimer.Stop();
-                MainText.Visibility = Visibility.Visible;
-                MainText.Text = "Game Over";
+                title.Visibility = Visibility.Visible;
                 ScoreText.Visibility = Visibility.Visible;
                 ScoreText.Text = "Your Score: " + score.ToString();
                 quitBtn.Visibility = Visibility.Visible;
@@ -102,7 +117,11 @@ namespace BlappyFirb
 
         private void QuitClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri("assets/bird1.png", UriKind.Relative));
+            Debug.WriteLine(img.Source);
+            CanvasGame.Children.Add(img);
+            //   Close();
         }
         private bool CheckGame(Birb birb, Trap trap)
         {
@@ -118,7 +137,8 @@ namespace BlappyFirb
             }
             return false;
         }
-        private void SetTrapPosition(Trap t)
+
+       private void SetTrapPosition(Trap t)
         {
             t.Move();
 

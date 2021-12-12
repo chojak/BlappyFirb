@@ -6,16 +6,13 @@
         xmlns:local="clr-namespace:BlappyFirb"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="900"
-        WindowStyle="None">
+        WindowStyle="None"
+        x:Name="Windowxd">
     <Canvas x:Name="CanvasGame" Focusable="True" KeyDown="CanvasGame_KeyDown">
-        <TextBlock x:Name="MainText"
-                       Text="BlappyFirb" FontSize="69"
-                       Width="376"
-                       Height="99"
-                   
-                       FontWeight="Heavy"
-                       FontStyle="Oblique" Canvas.Left="262" Canvas.Top="133"
-                     />
+        <Image x:Name="firstBackground" Source="/assets/background.png" Canvas.Left="0"/>
+        <Image x:Name="secondBackground" Source="/assets/background.png" Canvas.Left="899" />
+        <Image x:Name="title" Source="/assets/title.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" />
+
         <TextBlock x:Name="ScoreText"
                        FontSize="20"
                        Width="376"
@@ -23,6 +20,7 @@
                        TextAlignment ="Center"
                        FontWeight="Medium"
                        Canvas.Left="262" Canvas.Top="232"
+                       x:Uid="test"
                      />
         <TextBlock x:Name="ActualScoreText"
                    FontSize="20"
@@ -32,22 +30,53 @@
                    Width="100"
                    Visibility="Collapsed"
                    Canvas.ZIndex="1"
+                       x:Uid="test"
+                   
                      />
         <Button x:Name="startBtn" Click="StartClick" 
                     Width="100" Height="50"
-                    Canvas.Left="330" Canvas.Top="350"
+                    Canvas.Left="120" Canvas.Top="350"
                     Background="LightGreen" 
-                    Content="Start"/>
-        <Button x:Name="quitBtn" Click="QuitClick" 
-                    Width="100" Height="50"
-                    Canvas.Left="470" Canvas.Top="350"
-                    Background="OrangeRed" 
-                    Content="Quit"/>
+                    Content="Start"
+                       x:Uid="test"
+                />
+
         <Button x:Name="retryBtn" Click="StartClick" 
                     Width="100" Height="50"
-                    Canvas.Left="330" Canvas.Top="350"
+                    Canvas.Left="300" Canvas.Top="350"
                     Background="LightGreen" 
                     Visibility="Collapsed"
-                    Content="Retry!"/>
+                    Content="Retry!"
+                       x:Uid="test"
+                />
+        <Button x:Name="loginBtn" Click="StartClick" 
+            Width="100" Height="50"
+            Canvas.Left="260" Canvas.Top="350"
+            Background="LightGreen" 
+            Content="Login"
+            x:Uid="test"
+                />
+        <Button x:Name="hallOfFameBtn" Click="StartClick" 
+            Width="100" Height="50"
+            Canvas.Left="400" Canvas.Top="350"
+            Background="LightGreen" 
+            Content="Hall of Fame"
+            x:Uid="test"
+                />
+        <Button x:Name="instructionsBtn" Click="StartClick" 
+            Width="100" Height="50"
+            Canvas.Left="540" Canvas.Top="350"
+            Background="LightGreen" 
+            Content="Instructions"
+            x:Uid="test"
+                />
+
+        <Button x:Name="quitBtn" Click="QuitClick" 
+                    Width="100" Height="50"
+                    Canvas.Left="680" Canvas.Top="350"
+                    Background="OrangeRed" 
+                    Content="Quit"
+                       x:Uid="test"
+                />
     </Canvas>
 </Window>
