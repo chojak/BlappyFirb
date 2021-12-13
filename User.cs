@@ -10,14 +10,14 @@ namespace BlappyFirb
 {
     class User
     {
-        public int birbSprite { get; set; }
+        public int difficulty { get; set; }
         public string nickname { get; set; }
         public int highScore { get; set; }
-        public User(string nickname, int birb, int highScore)
+        public User(string nickname, int highScore, int difficulty)
         {
             this.nickname = nickname;
             this.highScore = highScore;
-            this.birbSprite = birb;
+            this.difficulty = difficulty;
         }
     }
 }

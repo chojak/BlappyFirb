@@ -7,35 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\background.png" />
-    <None Remove="assets\bird1.png" />
-    <None Remove="assets\bird2.png" />
-    <None Remove="assets\bird3.png" />
-    <None Remove="assets\bird4.png" />
-    <None Remove="assets\gameover.png" />
-    <None Remove="assets\halloffame.png" />
-    <None Remove="assets\instructions.png" />
-    <None Remove="assets\login.png" />
-    <None Remove="assets\lose.wav" />
-    <None Remove="assets\pipe.png" />
-    <None Remove="assets\title.png" />
-    <None Remove="assets\users.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="assets\background.png" />
-    <Resource Include="assets\bird1.png" />
-    <Resource Include="assets\bird2.png" />
-    <Resource Include="assets\bird3.png" />
-    <Resource Include="assets\bird4.png" />
-    <Resource Include="assets\gameover.png" />
-    <Resource Include="assets\halloffame.png" />
-    <Resource Include="assets\instructions.png" />
-    <Resource Include="assets\login.png" />
-    <Resource Include="assets\lose.wav" />
-    <Resource Include="assets\pipe.png" />
-    <Resource Include="assets\title.png" />
-    <Resource Include="assets\users.txt" />
+    <Compile Remove="assets\**" />
+    <EmbeddedResource Remove="assets\**" />
+    <None Remove="assets\**" />
+    <Page Remove="assets\**" />
   </ItemGroup>
 
 </Project>

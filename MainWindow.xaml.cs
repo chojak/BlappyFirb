@@ -33,7 +33,7 @@ namespace BlappyFirb
         int difficulty = 0;
         string nickname = "";
         int birbChoice = 0;
-        string usersPath = "assets/Users.txt";
+        string usersPath = "C:/assets/Users.txt";
         public MainWindow()
         {
             dispatcherTimer = new DispatcherTimer();
@@ -174,20 +174,51 @@ namespace BlappyFirb
                 return 0;
             });
 
-            firstPlace.Text = "1. " + Users[0].nickname + " score: " + Users[0].highScore;
-            firstPlace.Visibility = Visibility.Visible;
+            tableViewer.Visibility = Visibility.Visible;
+            for(int i = 0; i < 5; i++)
+            {
+                top5Table.RowGroups[0].Rows.Add(new TableRow());
+                var currentRow = top5Table.RowGroups[0].Rows[i + 1];
+                currentRow.Background = i%2 == 0 ? Brushes.Gold : Brushes.LightGoldenrodYellow;
+                
+                if(i == 0)
+                {
+                    currentRow.Background = Brushes.Gold;
+                }
+                if(i == 1)
+                {
+                    currentRow.Background = Brushes.Silver;
+                }
+                if(i == 2)
+                {
+                    currentRow.Background = Brushes.Brown;
+                }
+                if(i > 2)
+                {
+                    currentRow.Background = Brushes.RosyBrown;
+                }
 
-            secondPlace.Text = "2. " + Users[1].nickname + " score: " + Users[1].highScore;
-            secondPlace.Visibility = Visibility.Visible;
+                currentRow.FontWeight = System.Windows.FontWeights.Bold;
+                currentRow.Cells.Add(new TableCell(new Paragraph(new Run((i+1).ToString()))));
+                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(Users[i].nickname))));
+                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(Users[i].highScore.ToString()))));
+                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(Users[i].difficulty.ToString()))));
+            }
 
-            thirdPlace.Text = "3. " + Users[2].nickname + " score: " + Users[2].highScore;
-            thirdPlace.Visibility = Visibility.Visible;
+            //firstPlace.Text = "1. " + Users[0].nickname + "\tscore: " + Users[0].highScore + "\tdifficulty: " + Users[0].difficulty;
+            //firstPlace.Visibility = Visibility.Visible;
 
-            fourthPlace.Text = "4. " + Users[3].nickname + " score: " + Users[3].highScore;
-            fourthPlace.Visibility = Visibility.Visible;
+            //secondPlace.Text = "2. " + Users[1].nickname + "\tscore: " + Users[1].highScore + "\tdifficulty: " + Users[1].difficulty;
+            //secondPlace.Visibility = Visibility.Visible;
 
-            fifthPlace.Text = "5. " + Users[4].nickname + " score: " + Users[4].highScore;
-            fifthPlace.Visibility = Visibility.Visible;
+            //thirdPlace.Text = "3. " + Users[2].nickname + "\tscore: " + Users[2].highScore + "\tdifficulty: " + Users[2].difficulty;
+            //thirdPlace.Visibility = Visibility.Visible;
+
+            //fourthPlace.Text = "4. " + Users[3].nickname + "\tscore: " + Users[3].highScore + "\tdifficulty: " + Users[3].difficulty;
+            //fourthPlace.Visibility = Visibility.Visible;
+
+            //fifthPlace.Text = "5. " + Users[4].nickname + "\tscore: " + Users[4].highScore + "\tdifficulty: " + Users[4].difficulty;
+            //fifthPlace.Visibility = Visibility.Visible;
 
         }
         private void instructionsClick(object sender, RoutedEventArgs e)
@@ -292,7 +323,7 @@ namespace BlappyFirb
                     bool meet = false;
                     foreach(var x in Users)
                     {
-                        if(x.nickname == nickname && x.highScore < score)
+                        if(x.nickname == nickname && x.highScore <= score)
                         {
                             x.highScore = score;
                             meet = true;
@@ -307,9 +338,8 @@ namespace BlappyFirb
                 string UsersString = "";
                 foreach(var x in Users)
                 {
-                    UsersString += x.nickname + " " + x.birbSprite + " " + x.highScore + "\n";
+                    UsersString += x.nickname + " " + x.highScore + " " + x.difficulty + "\n";
                     System.Diagnostics.Debug.WriteLine(x.nickname);
-
                 }
                 System.Diagnostics.Debug.WriteLine(UsersString);
                 System.IO.File.WriteAllText(usersPath, UsersString);
@@ -336,9 +366,9 @@ namespace BlappyFirb
                     if (TempUsers[i].Split(' ').Length == 3)
                     {
                         string tmpNickname = TempUsers[i].Split(' ')[0];
-                        int tmphighScore = int.Parse(TempUsers[i].Split(' ')[2]);
-                        int tmpbirb = int.Parse(TempUsers[i].Split(' ')[1]);
-                        tmpUsers.Add(new User(tmpNickname, tmpbirb, tmphighScore));
+                        int tmphighScore = int.Parse(TempUsers[i].Split(' ')[1]);
+                        int tmpdiff = int.Parse(TempUsers[i].Split(' ')[2]);
+                        tmpUsers.Add(new User(tmpNickname, tmphighScore, tmpdiff));
                     }
                 }
                 return tmpUsers;

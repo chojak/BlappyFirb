@@ -9,13 +9,13 @@
         WindowStyle="None"
         x:Name="Windowxd">
     <Canvas x:Name="CanvasGame" Focusable="True" KeyDown="CanvasGame_KeyDown">
-        <Image x:Name="firstBackground" Source="/assets/background.png" Canvas.Left="0"/>
-        <Image x:Name="secondBackground" Source="/assets/background.png" Canvas.Left="899" />
-        <Image x:Name="title" Source="/assets/title.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Visible"/>
-        <Image x:Name="gameover" Source="/assets/gameover.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Collapsed" />
-        <Image x:Name="login" Source="/assets/login.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Collapsed" />
-        <Image x:Name="halloffame" Source="/assets/halloffame.png" Canvas.Left="105" Canvas.Top="40" Height="154" Width="690" Visibility="Collapsed" />
-        <Image x:Name="instructions" Source="/assets/instructions.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Collapsed" />
+        <Image x:Name="firstBackground" Source="C:/assets/background.png" Canvas.Left="0"/>
+        <Image x:Name="secondBackground" Source="C:/assets/background.png" Canvas.Left="899" />
+        <Image x:Name="title" Source="C:/assets/title.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Visible"/>
+        <Image x:Name="gameover" Source="C:/assets/gameover.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Collapsed" />
+        <Image x:Name="login" Source="C:/assets/login.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Collapsed" />
+        <Image x:Name="halloffame" Source="C:/assets/halloffame.png" Canvas.Left="105" Canvas.Top="40" Height="154" Width="690" Visibility="Collapsed" />
+        <Image x:Name="instructions" Source="C:/assets/instructions.png" Canvas.Left="105" Canvas.Top="61" Height="154" Width="690" Visibility="Collapsed" />
 
         <TextBlock x:Name="ScoreText"
                        FontSize="16"
@@ -119,19 +119,19 @@
             />
         <Button x:Name="birb1Btn" Click="Birb1Click"
                 Width="50" Height="50" Canvas.Left="200" Canvas.Top="250" Background="Transparent" Visibility="Collapsed" x:Uid="login">
-            <Image Source="/assets/bird1.png"></Image>
+            <Image Source="C:/assets/bird1.png"></Image>
         </Button>
         <Button x:Name="birb2Btn" Click="Birb2Click"
                 Width="50" Height="50" Canvas.Left="300" Canvas.Top="250" Background="Transparent" Visibility="Collapsed" x:Uid="login">
-            <Image Source="/assets/bird2.png"></Image>
+            <Image Source="C:/assets/bird2.png"></Image>
         </Button>
         <Button x:Name="birb3Btn" Click="Birb3Click"
                 Width="50" Height="50" Canvas.Left="400" Canvas.Top="250" Background="Transparent" Visibility="Collapsed" x:Uid="login">
-            <Image Source="/assets/bird3.png"></Image>
+            <Image Source="C:/assets/bird3.png"></Image>
         </Button>
         <Button x:Name="birb4Btn" Click="Birb4Click"
                 Width="50" Height="50" Canvas.Left="500" Canvas.Top="250" Background="Transparent" Visibility="Collapsed" x:Uid="login">
-            <Image Source="/assets/bird4.png"></Image>
+            <Image Source="C:/assets/bird4.png"></Image>
         </Button>
         <TextBlock FontSize="20"
                    TextAlignment="Center"
@@ -180,5 +180,29 @@
             Content="Return"
                 Visibility="Collapsed"
                 />
+
+        <FlowDocumentScrollViewer x:Name="tableViewer" Canvas.Left="200" Canvas.Top="162" Visibility="Collapsed" VerticalScrollBarVisibility="Disabled">
+            <FlowDocument>
+                <Paragraph FontSize="14pt" TextAlignment="Center" FontWeight="Black" FontFamily="Latin Extended Additional">Top 5 Blappy Firb's players!</Paragraph>
+                <Table x:Name="top5Table" FontFamily="Latin Extended Additional">
+                    <TableRowGroup Paragraph.TextAlignment="left">
+                        <TableRow FontWeight="Bold" >
+                            <TableCell>
+                                <Paragraph>Rank</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>Name</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>Score</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>Difficulty</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
     </Canvas>
 </Window>

@@ -7,7 +7,7 @@ using System.Windows.Shapes;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
-
+using System.Drawing;
 namespace BlappyFirb
 {
     class Trap
@@ -30,7 +30,7 @@ namespace BlappyFirb
             XPosition = 900;
             UpperPosition = rand.Next(-200, -20);
 
-            UpperTrap.Source = new BitmapImage(new Uri("assets/pipe.png", UriKind.Relative));
+            UpperTrap.Source = new BitmapImage(new Uri("C:/assets/pipe.png"));
             UpperTrap.RenderTransformOrigin = new System.Windows.Point(0.5, 0.5);
             UpperTrap.RenderTransform = new RotateTransform(180);
             UpperTrap.Width = 80;
@@ -38,7 +38,7 @@ namespace BlappyFirb
             UpperTrap.Stretch = Stretch.Fill;
 
             DownPosition = UpperPosition + 300 + gap;
-            DownTrap.Source = new BitmapImage(new Uri("assets/pipe.png", UriKind.Relative));
+            DownTrap.Source = new BitmapImage(new Uri("C:/assets/pipe.png"));
             DownTrap.Width = 80;
             DownTrap.Height = 350;
             UpperTrap.Stretch = Stretch.Fill;
