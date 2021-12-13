@@ -22,8 +22,9 @@ namespace BlappyFirb
             this.Size = size;
             this.YPosition = YPosition;
             this.XPosition = XPosition;
+            string birdPath = source == 0 ? "assets/bird1.png" : source == 1 ? "assets/bird2.png" : source == 2 ? "assets/bird3.png" : source == 3 ? "assets/bird4.png" : "assets/bird1.png";
             Image = new Image();
-            Image.Source = new BitmapImage(new Uri("assets/bird1.png", UriKind.Relative));
+            Image.Source = new BitmapImage(new Uri(birdPath, UriKind.Relative));
             Image.Width = size;
             Image.Height = size;
         }
